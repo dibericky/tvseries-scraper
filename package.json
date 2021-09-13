@@ -1,0 +1,22 @@
+{
+  "name": "tvseries-scraper",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap ./*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dibericky/tvseries-scraper.git"
+  },
+  "author": "Riccardo Di Benedetto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dibericky/tvseries-scraper/issues"
+  },
+  "homepage": "https://github.com/dibericky/tvseries-scraper#readme",
+  "devDependencies": {
+    "tap": "^15.0.9"
+  }
+}
