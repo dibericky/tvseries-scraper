@@ -5,17 +5,20 @@ require('dotenv').config()
 const amqp = require('amqplib')
 var axios = require("axios").default;
 const { MongoClient } = require('mongodb');
+const logger = require('pino')({level: 'debug'})
 
 const TVSERIES_COLLECTION = 'tvseries'
 
 async function connectMongo () {
+  logger.info('connecting to MongoDB')
   const client = new MongoClient(process.env.MONGODB_CONN_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
   await client.connect()
-  console.log('CONNECT to mongo')
+  logger.info('connected to MongoDB')
   return client.db()
 }
 
 async function getEpisodesByName (name) {
+    logger.debug({name}, 'search on IMDb')
     const {data} = await axios.request({
         method: 'GET',
         url: 'https://imdb8.p.rapidapi.com/title/find',
@@ -27,10 +30,16 @@ async function getEpisodesByName (name) {
     })
     const tvSerie = data.results[0]
     if (!tvSerie) {
+        logger.error({name}, 'tv serie not found')
         throw new Error('Not Found')
     }
     const {id, numberOfEpisodes, title} = tvSerie
-    const {uniqueId} = id.match(/^\/title\/(?<uniqueId>\w+)\/$/).groups
+    const matched = id.match(/^\/title\/(?<uniqueId>\w+)\/$/)
+    if (!matched) {
+        logger.debug({id}, 'Unknown id format from IMDb')
+        throw new Error('Unknown id format from IMDb')
+    }
+    const {uniqueId} = matched.groups
     return {
         serieId: uniqueId,
         numberOfEpisodes,
@@ -40,7 +49,8 @@ async function getEpisodesByName (name) {
 
 async function saveTvSerie (mongoDb, {serieId, numberOfEpisodes, title}) {
     const date = new Date()
-    await mongoDb.collection(TVSERIES_COLLECTION).updateOne({
+    logger.debug({serieId, numberOfEpisodes, title, date, collection: TVSERIES_COLLECTION}, 'saving of MongoDB')
+    const saved = await mongoDb.collection(TVSERIES_COLLECTION).updateOne({
         serieId
       }, {
         $set: {
@@ -55,12 +65,13 @@ async function saveTvSerie (mongoDb, {serieId, numberOfEpisodes, title}) {
       }, {
         upsert: true
       })
+    logger.debug({collection: TVSERIES_COLLECTION, saved}, 'saved on MongoDB')
 }
 
 async function handleConsume (msg, mongoDb) {
-    console.log("[x] Received %s", msg)   
+    logger.debug(msg, 'received from RabbitMQ')   
     const tvSerieDetail = await getEpisodesByName(msg.name)
-    console.log('tvSerieDetail ', tvSerieDetail)
+    logger.debug(tvSerieDetail, 'tvseries detail')
     await saveTvSerie(mongoDb, tvSerieDetail)
 }
 
@@ -102,10 +113,9 @@ async function run(){
       
     console.log("[*] Waiting for messages in %s. To exit press CTRL+X", queue)
     channel.consume(queue, (msg) => {
-              console.log('GET MSG')
-              console.clear()
               handleConsume(JSON.parse(msg.content.toString()), mongoDb)
                 .then(() => {
+                    logger.info('sending ack')
                     channel.ack(msg)
                 })
     }, {
