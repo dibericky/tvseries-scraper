@@ -1,0 +1,1299 @@
+{
+    "@meta": {
+        "operation": "Search",
+        "requestId": "fe4ecd82-370a-47d3-ab0d-fe82ae8776a6",
+        "serviceTimeMs": 57.710584
+    },
+    "@type": "imdb.api.find.response",
+    "query": "Supernatural",
+    "results": [
+        {
+            "id": "/title/tt0460681/",
+            "image": {
+                "height": 1500,
+                "id": "/title/tt0460681/images/rm1487774977",
+                "url": "https://m.media-amazon.com/images/M/MV5BNzRmZWJhNjUtY2ZkYy00N2MyLWJmNTktOTAwY2VkODVmOGY3XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+                "width": 1001
+            },
+            "runningTimeInMinutes": 44,
+            "nextEpisode": "/title/tt0713618/",
+            "numberOfEpisodes": 327,
+            "seriesEndYear": 2020,
+            "seriesStartYear": 2005,
+            "title": "Supernatural",
+            "titleType": "tvSeries",
+            "year": 2005,
+            "principals": [
+                {
+                    "id": "/name/nm0655585/",
+                    "legacyNameText": "Padalecki, Jared",
+                    "name": "Jared Padalecki",
+                    "category": "actor",
+                    "characters": [
+                        "Sam Winchester",
+                        "Ezekiel",
+                        "Gadreel"
+                    ],
+                    "endYear": 2020,
+                    "episodeCount": 327,
+                    "roles": [
+                        {
+                            "character": "Sam Winchester",
+                            "characterId": "/character/ch0018168/"
+                        },
+                        {
+                            "character": "Ezekiel",
+                            "characterId": "/character/ch0402408/"
+                        },
+                        {
+                            "character": "Gadreel",
+                            "characterId": "/character/ch0402408/"
+                        }
+                    ],
+                    "startYear": 2005
+                },
+                {
+                    "id": "/name/nm0010075/",
+                    "legacyNameText": "Ackles, Jensen",
+                    "name": "Jensen Ackles",
+                    "category": "actor",
+                    "characters": [
+                        "Dean Winchester",
+                        "Michael",
+                        "Demon Dean"
+                    ],
+                    "endYear": 2020,
+                    "episodeCount": 327,
+                    "roles": [
+                        {
+                            "character": "Dean Winchester",
+                            "characterId": "/character/ch0018166/"
+                        },
+                        {
+                            "character": "Michael",
+                            "characterId": "/character/ch0018166/"
+                        },
+                        {
+                            "character": "Demon Dean"
+                        }
+                    ],
+                    "startYear": 2005
+                },
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm0064769/",
+                    "legacyNameText": "Beaver, Jim (I)",
+                    "name": "Jim Beaver",
+                    "category": "actor",
+                    "characters": [
+                        "Bobby Singer",
+                        "Bobby",
+                        "Demon"
+                    ],
+                    "endYear": 2020,
+                    "episodeCount": 72,
+                    "roles": [
+                        {
+                            "character": "Bobby Singer",
+                            "characterId": "/character/ch0315387/"
+                        },
+                        {
+                            "character": "Bobby"
+                        },
+                        {
+                            "character": "Demon",
+                            "characterId": "/character/ch0068638/"
+                        }
+                    ],
+                    "startYear": 2006
+                }
+            ]
+        },
+        {
+            "id": "/title/tt3991412/",
+            "image": {
+                "height": 2048,
+                "id": "/title/tt3991412/images/rm3899395584",
+                "url": "https://m.media-amazon.com/images/M/MV5BMjQ0NjQxNDk4NV5BMl5BanBnXkFtZTgwMjE0ODc4OTE@._V1_.jpg",
+                "width": 1382
+            },
+            "runningTimeInMinutes": 108,
+            "title": "The 9th Life of Louis Drax",
+            "titleType": "movie",
+            "year": 2016,
+            "principals": [
+                {
+                    "id": "/name/nm1946193/",
+                    "legacyNameText": "Dornan, Jamie",
+                    "name": "Jamie Dornan",
+                    "billing": 13,
+                    "category": "actor",
+                    "characters": [
+                        "Dr. Allan Pascal"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Dr. Allan Pascal",
+                            "characterId": "/character/ch0486342/"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm4965754/",
+                    "legacyNameText": "Longworth, Aiden",
+                    "name": "Aiden Longworth",
+                    "billing": 1,
+                    "category": "actor",
+                    "characters": [
+                        "Louis Drax"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Louis Drax",
+                            "characterId": "/character/ch0486348/"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0300589/",
+                    "legacyNameText": "Gadon, Sarah",
+                    "name": "Sarah Gadon",
+                    "billing": 2,
+                    "category": "actress",
+                    "characters": [
+                        "Natalie"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Natalie",
+                            "characterId": "/character/ch0486343/"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "/title/tt0024631/",
+            "image": {
+                "height": 1000,
+                "id": "/title/tt0024631/images/rm1112082944",
+                "url": "https://m.media-amazon.com/images/M/MV5BNWZmZmJlY2UtMWM2MS00NDUxLWEwZjItMjY2NzllMmM0NDcwXkEyXkFqcGdeQXVyMjUxODE0MDY@._V1_.jpg",
+                "width": 670
+            },
+            "runningTimeInMinutes": 65,
+            "title": "Supernatural",
+            "titleType": "movie",
+            "year": 1933,
+            "principals": [
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm0001479/",
+                    "legacyNameText": "Lombard, Carole (I)",
+                    "name": "Carole Lombard",
+                    "billing": 1,
+                    "category": "actress",
+                    "characters": [
+                        "Roma Courtney"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Roma Courtney",
+                            "characterId": "/character/ch0129849/"
+                        }
+                    ]
+                },
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm0000068/",
+                    "legacyNameText": "Scott, Randolph (I)",
+                    "name": "Randolph Scott",
+                    "billing": 4,
+                    "category": "actor",
+                    "characters": [
+                        "Grant Wilson"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Grant Wilson",
+                            "characterId": "/character/ch0496259/"
+                        }
+                    ]
+                },
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm0003062/",
+                    "legacyNameText": "Dinehart, Alan (I)",
+                    "name": "Alan Dinehart",
+                    "as": "Allan Dinehart",
+                    "billing": 2,
+                    "category": "actor",
+                    "characters": [
+                        "Paul Bavian"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Paul Bavian",
+                            "characterId": "/character/ch0129850/"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "akas": [
+                "M.C. Supernatural"
+            ],
+            "id": "/name/nm1324372/",
+            "legacyNameText": "Supernatural",
+            "name": "Supernatural",
+            "knownFor": [
+                {
+                    "cast": [
+                        {
+                            "as": "M.C. Supernatural",
+                            "billing": 50,
+                            "category": "actor",
+                            "characters": [
+                                "Malik"
+                            ],
+                            "roles": [
+                                {
+                                    "character": "Malik",
+                                    "characterId": "/character/ch0273747/"
+                                }
+                            ]
+                        }
+                    ],
+                    "summary": {
+                        "category": "actor",
+                        "characters": [
+                            "Malik"
+                        ],
+                        "displayYear": "2010"
+                    },
+                    "id": "/title/tt1328908/",
+                    "title": "Bold Native",
+                    "titleType": "movie",
+                    "year": 2010
+                },
+                {
+                    "summary": {
+                        "category": "soundtrack",
+                        "displayYear": "2003"
+                    },
+                    "id": "/title/tt0385178/",
+                    "title": "Tony Hawk's Underground",
+                    "titleType": "videoGame",
+                    "year": 2003
+                },
+                {
+                    "cast": [
+                        {
+                            "as": "M.C. Supernatural",
+                            "category": "self",
+                            "characters": [
+                                "Self - Performer"
+                            ],
+                            "roles": [
+                                {
+                                    "character": "Self - Performer"
+                                }
+                            ]
+                        }
+                    ],
+                    "summary": {
+                        "category": "self",
+                        "characters": [
+                            "Self - Performer"
+                        ],
+                        "displayYear": "2006"
+                    },
+                    "id": "/title/tt0800181/",
+                    "title": "Rock the Bells",
+                    "titleType": "movie",
+                    "year": 2006
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "self",
+                            "characters": [
+                                "Self"
+                            ],
+                            "roles": [
+                                {
+                                    "character": "Self"
+                                }
+                            ]
+                        }
+                    ],
+                    "summary": {
+                        "category": "self",
+                        "characters": [
+                            "Self"
+                        ],
+                        "displayYear": "2013"
+                    },
+                    "id": "/title/tt6314468/",
+                    "title": "Til Infinity: The Souls of Mischief",
+                    "titleType": "movie",
+                    "year": 2013
+                }
+            ]
+        },
+        {
+            "id": "/name/nm1993101/",
+            "legacyNameText": "Santana, Johan",
+            "name": "Johan Santana",
+            "knownFor": [
+                {
+                    "cast": [
+                        {
+                            "category": "self",
+                            "characters": [
+                                "Self"
+                            ],
+                            "endYear": 2002,
+                            "episodeCount": 3,
+                            "roles": [
+                                {
+                                    "character": "Self"
+                                }
+                            ],
+                            "startYear": 2002
+                        }
+                    ],
+                    "summary": {
+                        "category": "self",
+                        "characters": [
+                            "Self"
+                        ],
+                        "displayYear": "2002"
+                    },
+                    "id": "/title/tt2327677/",
+                    "title": "2002 American League Championship Series",
+                    "titleType": "tvSeries",
+                    "year": 2002
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "self",
+                            "characters": [
+                                "Self"
+                            ],
+                            "endYear": 2005,
+                            "episodeCount": 1,
+                            "roles": [
+                                {
+                                    "character": "Self"
+                                }
+                            ],
+                            "startYear": 2005
+                        }
+                    ],
+                    "summary": {
+                        "category": "self",
+                        "characters": [
+                            "Self"
+                        ],
+                        "displayYear": "2005"
+                    },
+                    "id": "/title/tt1510043/",
+                    "title": "Kent Hrbek Outdoors",
+                    "titleType": "tvSeries",
+                    "year": 2004
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "self",
+                            "characters": [
+                                "Self - New York Mets Pitcher",
+                                "Self - Minnesota Twins Pitcher"
+                            ],
+                            "endYear": 2010,
+                            "episodeCount": 7,
+                            "roles": [
+                                {
+                                    "character": "Self - New York Mets Pitcher"
+                                },
+                                {
+                                    "character": "Self - Minnesota Twins Pitcher"
+                                }
+                            ],
+                            "startYear": 2002
+                        }
+                    ],
+                    "summary": {
+                        "category": "self",
+                        "characters": [
+                            "Self - New York Mets Pitcher",
+                            "Self - Minnesota Twins Pitcher"
+                        ],
+                        "displayYear": "2002-2010"
+                    },
+                    "id": "/title/tt1020929/",
+                    "title": "Sunday Night Baseball",
+                    "titleType": "tvSeries",
+                    "year": 1990
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "self",
+                            "characters": [
+                                "Self"
+                            ],
+                            "endYear": 2011,
+                            "episodeCount": 1,
+                            "roles": [
+                                {
+                                    "character": "Self"
+                                }
+                            ],
+                            "startYear": 2011
+                        }
+                    ],
+                    "summary": {
+                        "category": "self",
+                        "characters": [
+                            "Self"
+                        ],
+                        "displayYear": "2011"
+                    },
+                    "id": "/title/tt2789362/",
+                    "title": "ESPN Films",
+                    "titleType": "tvSeries",
+                    "year": 2011
+                }
+            ]
+        },
+        {
+            "id": "/title/tt0098692/",
+            "image": {
+                "height": 1807,
+                "id": "/title/tt0098692/images/rm2296398336",
+                "url": "https://m.media-amazon.com/images/M/MV5BMDNjMzZhMTktMzJlNy00ZWRmLTg1NzktNDQyZjVkNDAyODIwXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
+                "width": 1280
+            },
+            "runningTimeInMinutes": 82,
+            "title": "Wicked City",
+            "titleType": "movie",
+            "year": 1987,
+            "principals": [
+                {
+                    "id": "/name/nm0946344/",
+                    "legacyNameText": "Yara, Yûsaku",
+                    "name": "Yûsaku Yara",
+                    "attr": [
+                        "voice"
+                    ],
+                    "billing": 1,
+                    "category": "actor",
+                    "characters": [
+                        "Renzaburo Taki"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Renzaburo Taki",
+                            "characterId": "/character/ch0327521/"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0297847/",
+                    "legacyNameText": "Fujita, Toshiko",
+                    "name": "Toshiko Fujita",
+                    "attr": [
+                        "voice"
+                    ],
+                    "billing": 2,
+                    "category": "actress",
+                    "characters": [
+                        "Makie"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Makie",
+                            "characterId": "/character/ch0327523/"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0619077/",
+                    "legacyNameText": "Nagai, Ichirô",
+                    "name": "Ichirô Nagai",
+                    "attr": [
+                        "voice"
+                    ],
+                    "billing": 3,
+                    "category": "actor",
+                    "characters": [
+                        "Giuseppe Mayart"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Giuseppe Mayart"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "/title/tt1679482/",
+            "image": {
+                "height": 935,
+                "id": "/title/tt1679482/images/rm1210714880",
+                "url": "https://m.media-amazon.com/images/M/MV5BNDljNDlkZjctNDFlZi00ZjNjLTkxNDQtOTI5MzY1MGIzNGQ4XkEyXkFqcGdeQXVyNDQ2MTMzODA@._V1_.jpg",
+                "width": 656
+            },
+            "runningTimeInMinutes": 23,
+            "nextEpisode": "/title/tt1850833/",
+            "numberOfEpisodes": 22,
+            "seriesEndYear": 2011,
+            "seriesStartYear": 2011,
+            "title": "Supernatural: The Animation",
+            "titleType": "tvSeries",
+            "year": 2011,
+            "principals": [
+                {
+                    "id": "/name/nm0655585/",
+                    "legacyNameText": "Padalecki, Jared",
+                    "name": "Jared Padalecki",
+                    "category": "actor",
+                    "characters": [
+                        "Sam Winchester"
+                    ],
+                    "endYear": 2011,
+                    "episodeCount": 21,
+                    "roles": [
+                        {
+                            "character": "Sam Winchester",
+                            "characterId": "/character/ch0018168/"
+                        }
+                    ],
+                    "startYear": 2011
+                },
+                {
+                    "id": "/name/nm2195473/",
+                    "legacyNameText": "Slayd, Annakin",
+                    "name": "Annakin Slayd",
+                    "category": "actor",
+                    "characters": [
+                        "Dean Winchester"
+                    ],
+                    "endYear": 2011,
+                    "episodeCount": 19,
+                    "roles": [
+                        {
+                            "character": "Dean Winchester",
+                            "characterId": "/character/ch0018166/"
+                        }
+                    ],
+                    "startYear": 2011
+                },
+                {
+                    "id": "/name/nm1067368/",
+                    "legacyNameText": "Touchi, Hiroki",
+                    "name": "Hiroki Touchi",
+                    "category": "actor",
+                    "characters": [
+                        "Dean Winchester"
+                    ],
+                    "endYear": 2011,
+                    "episodeCount": 6,
+                    "roles": [
+                        {
+                            "character": "Dean Winchester",
+                            "characterId": "/character/ch0018166/"
+                        }
+                    ],
+                    "startYear": 2011
+                }
+            ]
+        },
+        {
+            "id": "/title/tt13222206/",
+            "image": {
+                "height": 750,
+                "id": "/title/tt13222206/images/rm3019366145",
+                "url": "https://m.media-amazon.com/images/M/MV5BOGI4ZWU4MjItZDA4Zi00NjdkLWI1NDUtZTI2YzRkOTIzYWUxXkEyXkFqcGdeQXVyNDkyODgyMjE@._V1_.jpg",
+                "width": 1334
+            },
+            "title": "Supernatural: The Long Road Home",
+            "titleType": "tvSpecial",
+            "year": 2020,
+            "principals": [
+                {
+                    "id": "/name/nm0655585/",
+                    "legacyNameText": "Padalecki, Jared",
+                    "name": "Jared Padalecki",
+                    "billing": 1,
+                    "category": "actor",
+                    "characters": [
+                        "Sam Winchester"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Sam Winchester"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0010075/",
+                    "legacyNameText": "Ackles, Jensen",
+                    "name": "Jensen Ackles",
+                    "billing": 2,
+                    "category": "actor",
+                    "characters": [
+                        "Dean Winchester"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Dean Winchester"
+                        }
+                    ]
+                },
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm1831976/",
+                    "legacyNameText": "Abel, Jake (I)",
+                    "name": "Jake Abel",
+                    "attr": [
+                        "archiveFootage"
+                    ],
+                    "category": "archive_footage",
+                    "characters": [
+                        "Michael"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Michael"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "/title/tt4567486/",
+            "image": {
+                "height": 2215,
+                "id": "/title/tt4567486/images/rm2971932160",
+                "url": "https://m.media-amazon.com/images/M/MV5BMTQ4OTkzODcxMl5BMl5BanBnXkFtZTgwMTAxMDkxOTE@._V1_.jpg",
+                "width": 1500
+            },
+            "runningTimeInMinutes": 87,
+            "title": "The Mind's Eye",
+            "titleType": "movie",
+            "year": 2015,
+            "principals": [
+                {
+                    "id": "/name/nm0804353/",
+                    "legacyNameText": "Skipper, Graham",
+                    "name": "Graham Skipper",
+                    "billing": 1,
+                    "category": "actor",
+                    "characters": [
+                        "Zack Connors"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Zack Connors"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm3354777/",
+                    "legacyNameText": "Carter, Lauren Ashley",
+                    "name": "Lauren Ashley Carter",
+                    "billing": 2,
+                    "category": "actress",
+                    "characters": [
+                        "Rachel Meadows"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Rachel Meadows"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0818285/",
+                    "legacyNameText": "Speredakos, John",
+                    "name": "John Speredakos",
+                    "billing": 3,
+                    "category": "actor",
+                    "characters": [
+                        "Dr. Michael Slovak"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Dr. Michael Slovak"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "/title/tt0092030/",
+            "image": {
+                "height": 1440,
+                "id": "/title/tt0092030/images/rm3760862976",
+                "url": "https://m.media-amazon.com/images/M/MV5BNGJlNTEzYjAtNjU2NS00NjdkLWFmN2YtMDg0YTZlNWY1YTRmXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_.jpg",
+                "width": 960
+            },
+            "runningTimeInMinutes": 91,
+            "title": "The Supernaturals",
+            "titleType": "movie",
+            "year": 1986,
+            "principals": [
+                {
+                    "id": "/name/nm0001028/",
+                    "legacyNameText": "Caulfield, Maxwell",
+                    "name": "Maxwell Caulfield",
+                    "billing": 1,
+                    "category": "actor",
+                    "characters": [
+                        "Pvt. Ray Ellis"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Pvt. Ray Ellis"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0629667/",
+                    "legacyNameText": "Nichols, Nichelle",
+                    "name": "Nichelle Nichols",
+                    "billing": 2,
+                    "category": "actress",
+                    "characters": [
+                        "Sgt. Leona Hawkins"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Sgt. Leona Hawkins"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0051104/",
+                    "legacyNameText": "Balsam, Talia",
+                    "name": "Talia Balsam",
+                    "billing": 3,
+                    "category": "actress",
+                    "characters": [
+                        "Pvt. Angela Lejune"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Pvt. Angela Lejune"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "/title/tt0396375/",
+            "image": {
+                "height": 375,
+                "id": "/title/tt0396375/images/rm3523997184",
+                "url": "https://m.media-amazon.com/images/M/MV5BNjg4MjgxMDcwNF5BMl5BanBnXkFtZTgwODY5NTk2NjE@._V1_.jpg",
+                "width": 500
+            },
+            "runningTimeInMinutes": 50,
+            "nextEpisode": "/title/tt0713627/",
+            "numberOfEpisodes": 8,
+            "seriesEndYear": 1977,
+            "seriesStartYear": 1977,
+            "title": "Supernatural",
+            "titleType": "tvMiniSeries",
+            "year": 1977,
+            "principals": [
+                {
+                    "id": "/name/nm0886995/",
+                    "legacyNameText": "Van Gyseghem, Andre",
+                    "name": "Andre Van Gyseghem",
+                    "category": "actor",
+                    "characters": [
+                        "Sir Francis"
+                    ],
+                    "endYear": 1977,
+                    "episodeCount": 3,
+                    "roles": [
+                        {
+                            "character": "Sir Francis",
+                            "characterId": "/character/ch0393524/"
+                        }
+                    ],
+                    "startYear": 1977
+                },
+                {
+                    "id": "/name/nm0925794/",
+                    "legacyNameText": "Whitelaw, Billie",
+                    "name": "Billie Whitelaw",
+                    "category": "actress",
+                    "characters": [
+                        "Countess Ilona"
+                    ],
+                    "endYear": 1977,
+                    "episodeCount": 2,
+                    "roles": [
+                        {
+                            "character": "Countess Ilona",
+                            "characterId": "/character/ch0408817/"
+                        }
+                    ],
+                    "startYear": 1977
+                },
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm0376915/",
+                    "legacyNameText": "Hendry, Ian (I)",
+                    "name": "Ian Hendry",
+                    "category": "actor",
+                    "characters": [
+                        "Zoltan Vinzenz"
+                    ],
+                    "endYear": 1977,
+                    "episodeCount": 2,
+                    "roles": [
+                        {
+                            "character": "Zoltan Vinzenz",
+                            "characterId": "/character/ch0389911/"
+                        }
+                    ],
+                    "startYear": 1977
+                }
+            ]
+        },
+        {
+            "id": "/title/tt0349166/",
+            "image": {
+                "height": 995,
+                "id": "/title/tt0349166/images/rm4210891520",
+                "url": "https://m.media-amazon.com/images/M/MV5BNGMwOGEzYzEtY2FiNS00YmViLWE0NmUtYmFiM2IxMjc1M2Y2XkEyXkFqcGdeQXVyMjQxNjgxMjg@._V1_.jpg",
+                "width": 771
+            },
+            "runningTimeInMinutes": 100,
+            "title": "Supernatural",
+            "titleType": "tvMovie",
+            "year": 2005,
+            "principals": [
+                {
+                    "disambiguation": "IV",
+                    "id": "/name/nm0280541/",
+                    "legacyNameText": "Fitzpatrick, Jim (IV)",
+                    "name": "Jim Fitzpatrick",
+                    "billing": 1,
+                    "category": "actor",
+                    "characters": [
+                        "Professor Calvin Gordon (Neurophysicist)"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Professor Calvin Gordon (Neurophysicist)"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0461458/",
+                    "legacyNameText": "Knotts, Jodi",
+                    "name": "Jodi Knotts",
+                    "billing": 2,
+                    "category": "actress",
+                    "characters": [
+                        "Lynn Gordon"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Lynn Gordon"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm0714793/",
+                    "legacyNameText": "Redeker, Quinn K.",
+                    "name": "Quinn K. Redeker",
+                    "billing": 4,
+                    "category": "actor",
+                    "characters": [
+                        "Stedman Goebal"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Stedman Goebal"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "/name/nm4968323/",
+            "legacyNameText": "Natural, Super",
+            "name": "Super Natural",
+            "knownFor": [
+                {
+                    "cast": [
+                        {
+                            "category": "actor",
+                            "characters": [
+                                "Fighter"
+                            ],
+                            "roles": [
+                                {
+                                    "character": "Fighter"
+                                }
+                            ]
+                        }
+                    ],
+                    "summary": {
+                        "category": "actor",
+                        "characters": [
+                            "Fighter"
+                        ],
+                        "displayYear": "2012"
+                    },
+                    "id": "/title/tt2302561/",
+                    "title": "Cage Fight",
+                    "titleType": "movie",
+                    "year": 2012
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "actor",
+                            "characters": [
+                                "Super Natural"
+                            ],
+                            "roles": [
+                                {
+                                    "character": "Super Natural"
+                                }
+                            ]
+                        }
+                    ],
+                    "crew": [
+                        {
+                            "category": "stunts",
+                            "job": "stunt performer"
+                        }
+                    ],
+                    "summary": {
+                        "category": "actor",
+                        "characters": [
+                            "Super Natural"
+                        ],
+                        "displayYear": "2000"
+                    },
+                    "id": "/title/tt10855508/",
+                    "title": "Lucha Libre Life",
+                    "titleType": "short",
+                    "year": 2000
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "actor",
+                            "characters": [
+                                "Super Natural"
+                            ],
+                            "roles": [
+                                {
+                                    "character": "Super Natural"
+                                }
+                            ]
+                        }
+                    ],
+                    "crew": [
+                        {
+                            "category": "stunts",
+                            "job": "stunt performer"
+                        }
+                    ],
+                    "summary": {
+                        "category": "actor",
+                        "characters": [
+                            "Super Natural"
+                        ],
+                        "displayYear": "2004"
+                    },
+                    "id": "/title/tt10855580/",
+                    "title": "Punishing Pro Wrestling",
+                    "titleType": "video",
+                    "year": 2004
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "actor",
+                            "characters": [
+                                "Super Natural"
+                            ],
+                            "roles": [
+                                {
+                                    "character": "Super Natural"
+                                }
+                            ]
+                        }
+                    ],
+                    "crew": [
+                        {
+                            "category": "stunts",
+                            "job": "stunt performer"
+                        }
+                    ],
+                    "summary": {
+                        "category": "actor",
+                        "characters": [
+                            "Super Natural"
+                        ],
+                        "displayYear": "2004"
+                    },
+                    "id": "/title/tt10855680/",
+                    "title": "Independent International Wrestling Champion",
+                    "titleType": "video",
+                    "year": 2004
+                }
+            ]
+        },
+        {
+            "id": "/name/nm6114201/",
+            "legacyNameText": "Supernaturals",
+            "name": "Supernaturals"
+        },
+        {
+            "id": "/name/nm4500982/",
+            "legacyNameText": "Supernaturalist, The",
+            "name": "The Supernaturalist"
+        },
+        {
+            "id": "/name/nm3162570/",
+            "legacyNameText": "Supernaturals, The",
+            "name": "The Supernaturals",
+            "knownFor": [
+                {
+                    "summary": {
+                        "category": "soundtrack",
+                        "displayYear": "1997"
+                    },
+                    "id": "/title/tt0120122/",
+                    "title": "Shooting Fish",
+                    "titleType": "movie",
+                    "year": 1997
+                },
+                {
+                    "summary": {
+                        "category": "soundtrack",
+                        "displayYear": "1998"
+                    },
+                    "disambiguation": "II",
+                    "id": "/title/tt0202346/",
+                    "title": "Fast Food",
+                    "titleType": "movie",
+                    "year": 1998
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "self",
+                            "characters": [
+                                "Themselves"
+                            ],
+                            "endYear": 1998,
+                            "episodeCount": 1,
+                            "roles": [
+                                {
+                                    "character": "Themselves"
+                                }
+                            ],
+                            "startYear": 1998
+                        }
+                    ],
+                    "summary": {
+                        "category": "self",
+                        "characters": [
+                            "Themselves"
+                        ],
+                        "displayYear": "1998"
+                    },
+                    "id": "/title/tt0139803/",
+                    "title": "Top of the Pops",
+                    "titleType": "tvSeries",
+                    "year": 1964
+                },
+                {
+                    "cast": [
+                        {
+                            "category": "self",
+                            "characters": [
+                                "Themselves"
+                            ],
+                            "endYear": 1998,
+                            "episodeCount": 1,
+                            "roles": [
+                                {
+                                    "character": "Themselves"
+                                }
+                            ],
+                            "startYear": 1998
+                        }
+                    ],
+                    "summary": {
+                        "category": "self",
+                        "characters": [
+                            "Themselves"
+                        ],
+                        "displayYear": "1998"
+                    },
+                    "id": "/title/tt0185801/",
+                    "title": "Fully Booked",
+                    "titleType": "tvSeries",
+                    "year": 1995
+                }
+            ]
+        },
+        {
+            "id": "/name/nm9627789/",
+            "legacyNameText": "Soul, Supernatural",
+            "name": "Supernatural Soul"
+        },
+        {
+            "id": "/title/tt3569164/",
+            "image": {
+                "height": 640,
+                "id": "/title/tt3569164/images/rm735058432",
+                "url": "https://m.media-amazon.com/images/M/MV5BNDc3NzM5MzI0MF5BMl5BanBnXkFtZTgwMTQ3NjIwODE@._V1_.jpg",
+                "width": 642
+            },
+            "runningTimeInMinutes": 90,
+            "title": "Act Super Naturally",
+            "titleType": "movie",
+            "year": 2019,
+            "principals": [
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm1596839/",
+                    "legacyNameText": "Abbott, Courtney (I)",
+                    "name": "Courtney Abbott",
+                    "category": "actress",
+                    "characters": [
+                        "Lauren Chambers"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Lauren Chambers"
+                        }
+                    ]
+                },
+                {
+                    "id": "/name/nm1003798/",
+                    "legacyNameText": "Alden, Kay",
+                    "name": "Kay Alden",
+                    "category": "actress",
+                    "characters": [
+                        "Bear Lake New Member"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Bear Lake New Member"
+                        }
+                    ]
+                },
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm1237088/",
+                    "legacyNameText": "Alexandru, Sadie (I)",
+                    "name": "Sadie Alexandru",
+                    "category": "actress",
+                    "characters": [
+                        "Natalie Cloonan"
+                    ],
+                    "roles": [
+                        {
+                            "character": "Natalie Cloonan"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "/title/tt3508984/",
+            "image": {
+                "height": 562,
+                "id": "/title/tt3508984/images/rm1340542976",
+                "url": "https://m.media-amazon.com/images/M/MV5BODYyMGJiMGUtZGZiYS00MDk2LTgwMGEtYzBjNjQ4ZGMzMzZjXkEyXkFqcGdeQXVyMzU0NzkwMDg@._V1_.jpg",
+                "width": 435
+            },
+            "runningTimeInMinutes": 106,
+            "title": "Supernatural",
+            "titleType": "movie",
+            "year": 2014,
+            "principals": [
+                {
+                    "id": "/name/nm6263745/",
+                    "legacyNameText": "Jarinyatorn, Baramee",
+                    "name": "Baramee Jarinyatorn",
+                    "billing": 1,
+                    "category": "actor"
+                },
+                {
+                    "id": "/name/nm6286642/",
+                    "legacyNameText": "Suwan, Waranyoo",
+                    "name": "Waranyoo Suwan",
+                    "billing": 2,
+                    "category": "actor"
+                },
+                {
+                    "id": "/name/nm1753356/",
+                    "legacyNameText": "Boonyai, Nophand",
+                    "name": "Nophand Boonyai",
+                    "billing": 3,
+                    "category": "actor"
+                }
+            ]
+        },
+        {
+            "id": "/title/tt9382690/",
+            "image": {
+                "height": 1026,
+                "id": "/title/tt9382690/images/rm303986176",
+                "url": "https://m.media-amazon.com/images/M/MV5BMWUxNGFlY2ItMjU2Ny00ZDA3LTg1ZGMtMjc4OGZhMDFiYzNhXkEyXkFqcGdeQXVyMDYxMDYyOA@@._V1_.jpg",
+                "width": 700
+            },
+            "runningTimeInMinutes": 56,
+            "title": "Supernatural",
+            "titleType": "video",
+            "year": 1997,
+            "principals": [
+                {
+                    "id": "/name/nm0174092/",
+                    "legacyNameText": "Comshaw, Lisa",
+                    "name": "Lisa Comshaw",
+                    "category": "actress"
+                },
+                {
+                    "disambiguation": "I",
+                    "id": "/name/nm1333640/",
+                    "legacyNameText": "Deane, Rachel (I)",
+                    "name": "Rachel Deane",
+                    "as": "Terry Rachel Dane",
+                    "category": "actress"
+                },
+                {
+                    "id": "/name/nm0544115/",
+                    "legacyNameText": "Mantia, J.J.",
+                    "name": "J.J. Mantia",
+                    "as": "Julianne JJ Mantia",
+                    "category": "actress"
+                }
+            ]
+        }
+    ],
+    "types": [
+        "title",
+        "name"
+    ]
+}
