@@ -1,6 +1,6 @@
 # TvSeries Scraper
 
-This is a component of the TvSeries Scraper application.
+This is a component of the PopCorn Planner application.
 
 This service aims to populate a "tvseries" collection with the information about the Tv Series it's required. 
 
