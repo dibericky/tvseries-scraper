@@ -1,0 +1,60 @@
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - name: RabbitMQ in GitHub Actions
+      # You may pin to the exact commit or the version.
+      # uses: Namoshek/rabbitmq-github-action@58b841360ede0e19fc5e4929fc2477ecc09193d8
+      uses: Namoshek/rabbitmq-github-action@v1.1.0
+      with:
+        # RabbitMQ version to use
+        version: 3.9
+        # Port mappings in a [host]:[container] format, delimited by spaces (example: "1883:1883 8883:8883")
+        ports: "5672:5672 15672:15672"
+        # Absolute path to a directory containing certificate files which can be referenced in the config (the folder is mounted under `/rabbitmq-certs`)
+        #certificates: # optional, default is 
+        # Absolute path to the `rabbitmq.conf` configuration file to use
+       # config: # optional, default is 
+        # Absolute path to the `definitions.json` definition file to use (requires using a `x.y.z-management` image version or enabling the `rabbitmq_management` plugin)
+        #definitions: # optional, default is 
+        # A comma separated list of RabbitMQ plugins which should be enabled
+        #plugins: # optional, default is 
+        # The name of the spawned Docker container (can be used as hostname when accessed from other containers)
+        # container-name: # optional, default is rabbitmq
+    - name: MongoDB in GitHub Actions
+      # You may pin to the exact commit or the version.
+      # uses: supercharge/mongodb-github-action@a16e87bbc3edc38021742a5f958831c905fe9f67
+      uses: supercharge/mongodb-github-action@1.6.0
+      with:
+        # MongoDB version to use (default "latest")
+        mongodb-version: 4.4 # optional, default is latest
+        # MongoDB replica set name (no replica set by default)
+        # mongodb-replica-set: # optional, default is 
+        # MongoDB port to use (default 27017)
+        mongodb-port: 27017
+    - run: npm test
