@@ -25,3 +25,24 @@ Example of document saved on MongoDB:
     "updatedAt": "1631644913465"
 }
 ```
+
+## Local Testing
+
+Install the dependencies
+
+```
+npm ci
+```
+
+Run the docker images of MongoDB and RabbitMQ
+
+```
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.9
+docker run -it --rm --name mongo4.4 -p 27017:27017 mongo:4.4
+```
+
+Run the tests
+
+```
+npm t
+```
