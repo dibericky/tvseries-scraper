@@ -28,5 +28,11 @@
     "dotenv": "^10.0.0",
     "mongodb": "^4.1.2",
     "pino": "^6.13.2"
-  }
+  },
+  "tap": {
+    "branches": 10,
+    "lines": 80,
+    "functions": 80,
+    "statements": 80
+  }  
 }
