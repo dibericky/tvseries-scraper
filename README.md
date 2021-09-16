@@ -2,11 +2,11 @@
 
 This is a component of the PopCorn Planner application.
 
-This service aims to populate a "tvseries" collection with the information about the Tv Series it's required. 
+This service aims to populate a "tvseries" collection with the information about the Tv Series it's required.
 
-It listens on a queue on RabbitMQ, when a message with the name of a Tv Serie is received, it search for information about that serie using the IMDb Api. Once the information has been found, it updates a collection on mongodb.
+It listens on a queue on RabbitMQ when a message with the name of a Tv Serie is received, it searches for information about that series using the IMDb API. Once the information has been found, it updates a collection on MongoDB.
 
-Example of message received on RabbitMQ.
+Example of a message received on RabbitMQ.
 
 ```json
 { "name": "Supernatural" }
