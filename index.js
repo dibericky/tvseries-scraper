@@ -9,6 +9,9 @@ const pinoLogger = require('pino')({level: 'debug'})
 
 const TVSERIES_COLLECTION = 'tvseries'
 
+const QUEUE_RETRIEVE = 'popcorn-planner.tvserie-retrieve'
+const QUEUE_SAVED = 'popcorn-planner.tvserie-saved'
+
 async function connectMongo (logger, connectionString) {
   logger.info('connecting to MongoDB')
   const client = new MongoClient(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -73,6 +76,7 @@ async function handleConsume (logger, msg, mongoDb, apiKey) {
     const tvSerieDetail = await getEpisodesByName(logger, msg.name, apiKey)
     logger.debug({tvSerieDetail}, 'tvseries detail')
     await saveTvSerie(logger, mongoDb, tvSerieDetail)
+    return tvSerieDetail
 }
 
 async function initializeCollection (logger, mongoDb) {
@@ -105,18 +109,28 @@ async function run(logger, {RABBITMQ_CONN_STRING, MONGODB_CONN_STRING, IMDB8_API
 
     const connection = await amqp.connect(RABBITMQ_CONN_STRING)
     const channel = await connection.createChannel()
-    var queue = 'popcorn-planner.tvserie-retrieve';
       
-    channel.assertQueue(queue, {
+    channel.assertQueue(QUEUE_RETRIEVE, {
       durable: true
     });
     channel.prefetch(1)
       
-    logger.debug({queue}, "waiting for messages in queue")
-    channel.consume(queue, (msg) => {
+    logger.debug({queue: QUEUE_RETRIEVE}, "waiting for messages in queue")
+    channel.consume(QUEUE_RETRIEVE, (msg) => {
               logger.debug({msg}, 'received message')
               handleConsume(logger, JSON.parse(msg.content.toString()), mongoDb, IMDB8_API_KEY)
-                .then(() => {
+                .then(({title}) => {
+                    const savedMsg = JSON.stringify({title})
+
+                    logger.debug({queue: QUEUE_SAVED, title}, 'sending message that title has been saved')
+
+                    channel.assertQueue(QUEUE_SAVED, {
+                        durable: true
+                    })
+                    channel.sendToQueue(QUEUE_SAVED, Buffer.from(savedMsg), {
+                        persistent: true
+                    })
+
                     logger.info('Sending ack')
                     channel.ack(msg)
                 })

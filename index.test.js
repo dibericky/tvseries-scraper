@@ -6,6 +6,7 @@ const amqp = require('amqplib')
 const logger = require('pino')({level: 'silent'})
 const nock = require('nock')
 const {omit} = require('ramda')
+const sinon = require('sinon')
 
 const mockAPI = require('./find-title.example.json')
 
@@ -17,7 +18,8 @@ const envs = {
     MONGODB_CONN_STRING: 'mongodb://127.0.0.1:27017/db-test'
 }
 
-const queue = 'popcorn-planner.tvserie-retrieve'
+const retrieveQueue = 'popcorn-planner.tvserie-retrieve'
+const savedQueue = 'popcorn-planner.tvserie-saved'
 
 tap.test('main', t => {
     let mongoDbClient, rabbitMqConnection, channel
@@ -29,11 +31,11 @@ tap.test('main', t => {
 
         rabbitMqConnection = await amqp.connect(envs.RABBITMQ_CONN_STRING)
         channel = await rabbitMqConnection.createChannel()
-        await channel.deleteQueue(queue)
+        await channel.deleteQueue(retrieveQueue)
     })
 
     t.afterEach(async () => {
-        await channel.deleteQueue(queue)
+        await channel.deleteQueue(retrieveQueue)
         rabbitMqConnection.close()
 
         await mongoDbClient.db().dropDatabase()
@@ -42,6 +44,13 @@ tap.test('main', t => {
 
     t.test('saves on mongo collection when a message is received', async t => {
         const mockAPI = mockIMDbAPI()
+
+        channel.assertQueue(savedQueue, {
+            durable: true
+        });
+        const savedCallbackMock = sinon.spy()
+        channel.consume(savedQueue, savedCallbackMock, {noAck: true})
+        
         const close = await main(logger, envs)
         await sendTestMessage(channel)
 
@@ -60,6 +69,10 @@ tap.test('main', t => {
             title: 'Supernatural'
         })
 
+        t.ok(savedCallbackMock.calledOnce)
+        const {args} = savedCallbackMock.getCall(0)
+        t.strictSame(args.length, 1)
+        t.strictSame(JSON.parse(args[0].content.toString()), {title: 'Supernatural'})
         await close()
         
         mockAPI.done()
@@ -85,10 +98,10 @@ function mockIMDbAPI() {
 
 async function sendTestMessage (channel) {
     const msg = JSON.stringify({name: 'Supernatural'})
-    channel.assertQueue(queue, {
+    channel.assertQueue(retrieveQueue, {
         durable: true
     })
-    channel.sendToQueue(queue, Buffer.from(msg), {
+    channel.sendToQueue(retrieveQueue, Buffer.from(msg), {
         persistent: true
     })
 }

@@ -20,6 +20,7 @@
   "devDependencies": {
     "nock": "^13.1.3",
     "ramda": "^0.27.1",
+    "sinon": "^11.1.2",
     "tap": "^15.0.9"
   },
   "dependencies": {
@@ -34,5 +35,5 @@
     "lines": 80,
     "functions": 80,
     "statements": 80
-  }  
+  }
 }
