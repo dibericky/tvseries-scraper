@@ -41,6 +41,23 @@ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.9
 docker run -it --rm --name mongo4.4 -p 27017:27017 mongo:4.4
 ```
 
+Run postgres
+
+```
+docker pull postgres
+
+# Create a local folder for storage
+mkdir ${HOME}/postgres-data/
+
+# Run the image
+
+docker run -d \         
+        --name dev-postgres -e POSTGRES_USER=user \
+        -e POSTGRES_PASSWORD=password123 \
+        -v ${HOME}/postgres-data/:/var/lib/postgresql/data \
+        -p 5432:5432 postgres
+```
+
 Run the tests
 
 ```

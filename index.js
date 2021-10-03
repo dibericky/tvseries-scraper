@@ -5,9 +5,12 @@ require('dotenv').config()
 const amqp = require('amqplib')
 var axios = require("axios").default;
 const { MongoClient } = require('mongodb');
+const knex = require('knex')
+const {omit} = require('ramda')
 const pinoLogger = require('pino')({level: 'debug'})
 
 const TVSERIES_COLLECTION = 'tvseries'
+const EPISODES_TABLE = 'episodes'
 
 const QUEUE_RETRIEVE = 'popcorn-planner.tvserie-retrieve'
 const QUEUE_SAVED = 'popcorn-planner.tvserie-saved'
@@ -18,6 +21,16 @@ async function connectMongo (logger, connectionString) {
   await client.connect()
   logger.info('connected to MongoDB')
   return client
+}
+
+async function connectPostgres (logger, connectionString) {
+    logger.info('connecting to postgres')
+    const client = knex({
+        client: 'pg',
+        connection: connectionString
+      });
+    logger.info('connected to postgres')
+    return client
 }
 
 async function getEpisodesByName (logger, name, apiKey) {
@@ -43,22 +56,34 @@ async function getEpisodesByName (logger, name, apiKey) {
         throw new Error('Unknown id format from IMDb')
     }
     const {uniqueId} = matched.groups
+
+    const {data: seasons} = await axios.request({
+        method: 'GET',
+        url: 'https://imdb8.p.rapidapi.com/title/get-seasons',
+        params: {tconst: uniqueId},
+        headers: {
+        'x-rapidapi-host': 'imdb8.p.rapidapi.com',
+        'x-rapidapi-key': apiKey
+        }
+    })
+    const allEpisodes = seasons.reduce((acc, season) => {
+        return acc.concat(season.episodes)
+    }, [])
     return {
         serieId: uniqueId,
-        numberOfEpisodes,
+        allEpisodes: allEpisodes,
         title
     }
 }
 
-async function saveTvSerie (logger, mongoDb, {serieId, numberOfEpisodes, title}) {
+async function saveTvSerie (logger, mongoDb, postgresClient, {serieId, allEpisodes, title}) {
     const date = new Date()
-    logger.debug({serieId, numberOfEpisodes, title, date, collection: TVSERIES_COLLECTION}, 'saving of MongoDB')
+    logger.debug({serieId, numberOfEpisodes: allEpisodes.length, title, date, collection: TVSERIES_COLLECTION}, 'saving of MongoDB')
     const saved = await mongoDb.collection(TVSERIES_COLLECTION).updateOne({
         serieId
       }, {
         $set: {
             serieId,
-            numberOfEpisodes,
             title,
             updatedAt: date
         },
@@ -69,13 +94,16 @@ async function saveTvSerie (logger, mongoDb, {serieId, numberOfEpisodes, title})
         upsert: true
       })
     logger.debug({collection: TVSERIES_COLLECTION, saved}, 'saved on MongoDB')
+    await postgresClient(EPISODES_TABLE).insert(
+        allEpisodes.map(episode => ({serieId: serieId, season: episode.season, episode: episode.episode}))
+    )
 }
 
-async function handleConsume (logger, msg, mongoDb, apiKey) {
+async function handleConsume (logger, msg, mongoDb, apiKey, postgresClient) {
     logger.debug({msg}, 'received from RabbitMQ')   
     const tvSerieDetail = await getEpisodesByName(logger, msg.name, apiKey)
-    logger.debug({tvSerieDetail}, 'tvseries detail')
-    await saveTvSerie(logger, mongoDb, tvSerieDetail)
+    logger.debug({tvSerieDetail: omit(['allEpisodes'], tvSerieDetail)}, 'tvseries detail')
+    await saveTvSerie(logger, mongoDb, postgresClient, tvSerieDetail)
     return tvSerieDetail
 }
 
@@ -102,10 +130,28 @@ async function initializeCollection (logger, mongoDb) {
     }
 }
 
-async function run(logger, {RABBITMQ_CONN_STRING, MONGODB_CONN_STRING, IMDB8_API_KEY}){
+async function initializeTables(logger, client) {
+    logger.debug('initializing postgres table')
+    const hasTable = await client.schema.hasTable(EPISODES_TABLE)
+    if (!hasTable) {
+        logger.debug('creating episodes table')
+        await client.schema.createTable(EPISODES_TABLE, (table) => {
+            table.increments('id')
+            table.string('serieId')
+            table.integer('season')
+            table.integer('episode')
+            table.unique(['serieId', 'season', 'episode'])
+        })
+    }
+}
+
+async function run(logger, {RABBITMQ_CONN_STRING, MONGODB_CONN_STRING, IMDB8_API_KEY, POSTGRES_CONN_STRING}){
     const mongoDbClient = await connectMongo(logger, MONGODB_CONN_STRING)
     const mongoDb = mongoDbClient.db()
     await initializeCollection(logger, mongoDb)
+
+    const postgresClient = await connectPostgres(logger, POSTGRES_CONN_STRING)
+    await initializeTables(logger, postgresClient)
 
     const connection = await amqp.connect(RABBITMQ_CONN_STRING)
     const channel = await connection.createChannel()
@@ -118,7 +164,7 @@ async function run(logger, {RABBITMQ_CONN_STRING, MONGODB_CONN_STRING, IMDB8_API
     logger.debug({queue: QUEUE_RETRIEVE}, "waiting for messages in queue")
     channel.consume(QUEUE_RETRIEVE, (msg) => {
               logger.debug({msg}, 'received message')
-              handleConsume(logger, JSON.parse(msg.content.toString()), mongoDb, IMDB8_API_KEY)
+              handleConsume(logger, JSON.parse(msg.content.toString()), mongoDb, IMDB8_API_KEY, postgresClient)
                 .then(({title}) => {
                     const savedMsg = JSON.stringify({title})
 
@@ -141,6 +187,7 @@ async function run(logger, {RABBITMQ_CONN_STRING, MONGODB_CONN_STRING, IMDB8_API
     return async () => {
         await mongoDbClient.close()
         await connection.close()
+        await postgresClient.destroy()
     }
 }
 

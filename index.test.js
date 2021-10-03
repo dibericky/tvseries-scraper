@@ -7,22 +7,25 @@ const logger = require('pino')({level: 'silent'})
 const nock = require('nock')
 const {omit} = require('ramda')
 const sinon = require('sinon')
+const knex = require('knex')
 
-const mockAPI = require('./find-title.example.json')
+const mockAPIFind = require('./find-title.example.json')
+const mockAPIEpisodes = require('./get-episodes.example.json')
 
 const main = require('./index')
 
 const envs = {
     RABBITMQ_CONN_STRING: 'amqp://localhost',
     IMDB8_API_KEY: 'imdb8-api-key',
-    MONGODB_CONN_STRING: 'mongodb://127.0.0.1:27017/db-test'
+    MONGODB_CONN_STRING: 'mongodb://127.0.0.1:27017/db-test',
+    POSTGRES_CONN_STRING: 'postgresql://user:password123@172.17.0.4:5432/db-test'
 }
 
 const retrieveQueue = 'popcorn-planner.tvserie-retrieve'
 const savedQueue = 'popcorn-planner.tvserie-saved'
 
 tap.test('main', t => {
-    let mongoDbClient, rabbitMqConnection, channel
+    let mongoDbClient, rabbitMqConnection, channel, postgresClient
 
     t.beforeEach(async () => {
         mongoDbClient = new MongoClient(envs.MONGODB_CONN_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -32,6 +35,16 @@ tap.test('main', t => {
         rabbitMqConnection = await amqp.connect(envs.RABBITMQ_CONN_STRING)
         channel = await rabbitMqConnection.createChannel()
         await channel.deleteQueue(retrieveQueue)
+
+        postgresClient = knex({
+            client: 'pg',
+            connection: 'postgresql://user:password123@172.17.0.4:5432/db-test'
+          });
+
+        const hasTable = await postgresClient.schema.hasTable('episodes')
+        if (hasTable){
+            await postgresClient.schema.dropTable('episodes')
+        }
     })
 
     t.afterEach(async () => {
@@ -40,9 +53,10 @@ tap.test('main', t => {
 
         await mongoDbClient.db().dropDatabase()
         await mongoDbClient.close()
+        await postgresClient.destroy()
     })
 
-    t.test('saves on mongo collection when a message is received', async t => {
+    t.test('saves on mongo collection and postgres when a message is received', async t => {
         const mockAPI = mockIMDbAPI()
 
         channel.assertQueue(savedQueue, {
@@ -65,7 +79,6 @@ tap.test('main', t => {
 
         t.strictSame(omit(['_id', 'createdAt', 'updatedAt'], addedTvSerie), {
             serieId: 'tt0460681',
-            numberOfEpisodes: 327,
             title: 'Supernatural'
         })
 
@@ -73,6 +86,21 @@ tap.test('main', t => {
         const {args} = savedCallbackMock.getCall(0)
         t.strictSame(args.length, 1)
         t.strictSame(JSON.parse(args[0].content.toString()), {title: 'Supernatural'})
+
+        const episodes = await postgresClient.raw('SELECT * FROM episodes')
+        t.strictSame(episodes.rows.length, 327)
+        t.strictSame(episodes.rows.slice(0, 2), [{
+            id: 1,
+            episode: 1,
+            season: 1,
+            serieId: 'tt0460681'
+        }, {
+            id: 2,
+            episode: 2,
+            season: 1,
+            serieId: 'tt0460681'
+        }])
+
         await close()
         
         mockAPI.done()
@@ -91,7 +119,12 @@ function mockIMDbAPI() {
         .query({
             q: 'Supernatural'
         })
-        .reply(200, mockAPI)
+        .reply(200, mockAPIFind)
+        .get('/title/get-seasons')
+        .query({
+            tconst: 'tt0460681'
+        })
+        .reply(200, mockAPIEpisodes)
   return scope
 }
 
