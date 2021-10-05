@@ -3,7 +3,7 @@
 const tap = require('tap')
 const {MongoClient} = require('mongodb')
 const amqp = require('amqplib')
-const logger = require('pino')({level: 'silent'})
+const logger = require('pino')({level: 'info'})
 const nock = require('nock')
 const {omit} = require('ramda')
 const sinon = require('sinon')
@@ -14,7 +14,7 @@ const mockAPIEpisodes = require('./get-episodes.example.json')
 
 const main = require('./index')
 
-const POSTGRES_HOST = process.env.POSTGRES_HOST_CI || 'localhost'
+const POSTGRES_HOST = 'localhost'
 const envs = {
     RABBITMQ_CONN_STRING: 'amqp://localhost',
     IMDB8_API_KEY: 'imdb8-api-key',
@@ -29,6 +29,7 @@ tap.test('main', t => {
     let mongoDbClient, rabbitMqConnection, channel, postgresClient
 
     t.beforeEach(async () => {
+        logger.info({envs}, 'connections strings')
         mongoDbClient = new MongoClient(envs.MONGODB_CONN_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
         await mongoDbClient.connect()
         await mongoDbClient.db().dropDatabase()

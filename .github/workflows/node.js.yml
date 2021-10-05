@@ -9,14 +9,9 @@ on:
     branches: [ main ]
 
 jobs:
-  container-job:
+  runner-job:
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    container: node:14.18-alpine
     services:
       # Label used to access the service container
       postgres:
@@ -33,6 +28,8 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+          - 5432:5432
     steps:
     - uses: actions/checkout@v2
     - run: npm ci
@@ -66,4 +63,4 @@ jobs:
         # mongodb-replica-set: # optional, default is 
         # MongoDB port to use (default 27017)
         mongodb-port: 27017
-    - run: POSTGRES_HOST_CI=postgres npm test
+    - run: npm test
