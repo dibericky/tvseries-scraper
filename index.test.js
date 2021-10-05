@@ -14,11 +14,12 @@ const mockAPIEpisodes = require('./get-episodes.example.json')
 
 const main = require('./index')
 
+const POSTGRES_HOST = process.env.POSTGRES_HOST_CI || '172.17.0.4'
 const envs = {
     RABBITMQ_CONN_STRING: 'amqp://localhost',
     IMDB8_API_KEY: 'imdb8-api-key',
     MONGODB_CONN_STRING: 'mongodb://127.0.0.1:27017/db-test',
-    POSTGRES_CONN_STRING: 'postgresql://user:password123@172.17.0.4:5432/db-test'
+    POSTGRES_CONN_STRING: `postgresql://user:password123@${POSTGRES_HOST}:5432/db-test`
 }
 
 const retrieveQueue = 'popcorn-planner.tvserie-retrieve'
@@ -38,7 +39,7 @@ tap.test('main', t => {
 
         postgresClient = knex({
             client: 'pg',
-            connection: 'postgresql://user:password123@172.17.0.4:5432/db-test'
+            connection: envs.POSTGRES_CONN_STRING
           });
 
         const hasTable = await postgresClient.schema.hasTable('episodes')
