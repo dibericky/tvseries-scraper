@@ -3,7 +3,7 @@
 const tap = require('tap')
 const {MongoClient} = require('mongodb')
 const amqp = require('amqplib')
-const logger = require('pino')({level: 'info'})
+const logger = require('pino')({level: 'silent'})
 const nock = require('nock')
 const {omit} = require('ramda')
 const sinon = require('sinon')
@@ -29,7 +29,6 @@ tap.test('main', t => {
     let mongoDbClient, rabbitMqConnection, channel, postgresClient
 
     t.beforeEach(async () => {
-        logger.info({envs}, 'connections strings')
         mongoDbClient = new MongoClient(envs.MONGODB_CONN_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
         await mongoDbClient.connect()
         await mongoDbClient.db().dropDatabase()
