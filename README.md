@@ -28,34 +28,79 @@ Example of document saved on MongoDB:
 
 ## Local Testing
 
-Install the dependencies
+### Install the dependencies
 
 ```
 npm ci
 ```
 
-Run the docker images of MongoDB and RabbitMQ
+### Run the docker images of MongoDB and RabbitMQ
 
 ```
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.9
 docker run -it --rm --name mongo4.4 -p 27017:27017 mongo:4.4
 ```
 
-Run postgres
+### Run postgres
+
+Run the image
 
 ```
 docker pull postgres
-
-# Create a local folder for storage
-mkdir ${HOME}/postgres-data/
-
-# Run the image
-
 docker run -d \         
-        --name dev-postgres -e POSTGRES_USER=user \
+        --name postgres -e POSTGRES_USER=user \
         -e POSTGRES_PASSWORD=password123 \
-        -v ${HOME}/postgres-data/:/var/lib/postgresql/data \
         -p 5432:5432 postgres
+```
+
+Enter into the container
+
+```
+docker exec -it postgres bash
+```
+
+Execute the psql cli inside the container with the superuser defined previously
+
+```
+psql -U user
+```
+
+Create the database
+
+```
+CREATE DATABASE dbtest;
+```
+
+Check that the database has been created
+
+```
+\l
+```
+
+Example:
+```
+user=# \l
+                             List of databases
+   Name    | Owner | Encoding |  Collate   |   Ctype    | Access privileges 
+-----------+-------+----------+------------+------------+-------------------
+ dbtest    | user  | UTF8     | en_US.utf8 | en_US.utf8 | 
+ postgres  | user  | UTF8     | en_US.utf8 | en_US.utf8 | 
+ template0 | user  | UTF8     | en_US.utf8 | en_US.utf8 | =c/user          +
+           |       |          |            |            | user=CTc/user
+ template1 | user  | UTF8     | en_US.utf8 | en_US.utf8 | =c/user          +
+           |       |          |            |            | user=CTc/user
+ user      | user  | UTF8     | en_US.utf8 | en_US.utf8 | 
+ ```
+
+Close the cli
+
+```
+\q
+```
+
+Exit the container
+```
+exit
 ```
 
 Run the tests
