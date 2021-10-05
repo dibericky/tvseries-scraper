@@ -2,7 +2,6 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
-
 on:
   push:
     branches: [ main ]
@@ -10,15 +9,14 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  container-job:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
+    # strategy:
+    #   matrix:
+    #     node-version: [12.x, 14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
+    container: node:14.18-alpine
     services:
       # Label used to access the service container
       postgres:
@@ -37,11 +35,6 @@ jobs:
           --health-retries 5
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
     - run: npm ci
     - name: RabbitMQ in GitHub Actions
       # You may pin to the exact commit or the version.
